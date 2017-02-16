@@ -20,3 +20,5 @@ Route::get('welcome', function () {
 });
 
 Route::get('about', 'PageController@about');
+
+Route::get('teams/{team}', 'TeamController@show');
