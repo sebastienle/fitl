@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Team;
+
 class TeamController extends Controller
 {
     /**
@@ -48,10 +50,11 @@ class TeamController extends Controller
      */
     public function show($id)
     {
-        echo $id;
-        exit; 
-        
-        return view('teams/show');
+        $data = array();
+        $team = Team::findOrFail($id);
+        $data['object'] = $team;
+
+        return view('teams/show', $data);
     }
 
     /**
