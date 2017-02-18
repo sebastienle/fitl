@@ -20,8 +20,9 @@ Route::get('welcome', function () {
 });
 
 Route::get('about', 'PageController@about');
-
 Route::get('contact', 'PageController@contact');
 
+Route::post('teams/store', 'TeamController@store');
+Route::get('teams/create', 'TeamController@create');
 Route::get('teams/{team}', 'TeamController@show');
 Route::get('teams','TeamController@index');

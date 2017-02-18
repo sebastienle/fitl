@@ -34,7 +34,10 @@ class TeamController extends Controller
      */
     public function create()
     {
-        //
+        $team = new Team;
+        $data = array();
+        $data['team'] = $team;
+        return view('teams.create', $data);
     }
 
     /**
@@ -45,7 +48,10 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        echo '<pre>';
+        //print_r($request);
+        echo $request->NbPlayers;
+        echo '</pre>';
     }
 
     /**
