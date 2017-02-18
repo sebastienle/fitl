@@ -48,10 +48,28 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        echo '<pre>';
-        //print_r($request);
-        echo $request->NbPlayers;
-        echo '</pre>';
+        $team = new Team;
+
+        // set the team's data from the form data
+        $team->Name = $request->Name;
+        $team->Sport = $request->Sport;
+        $team->NbPlayers = $request->NbPlayers;
+
+        // create a new team in the db
+        if (!$team->save()) {
+            $errors = $team->getErrors();
+            
+            // redirect back to the create page and pass along the errors
+            return redirect()
+                ->action('TeamController@create')
+                ->with('errors', $errors)
+                ->withInput();
+        }
+        
+        // success!
+        return redirect()
+            ->action('TeamController@index')
+            ->with('message', '<div class="alert alert-success">Team created successfully!</div>');
     }
 
     /**

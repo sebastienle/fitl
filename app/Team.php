@@ -2,9 +2,13 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use \Esensi\Model\Model;
 
 class Team extends Model
 {
-
+	protected $rules = [
+		'Name' => ['required'],
+		'Sport' => ['required'],
+		'NbPlayers' => ['required'],
+	];
 }
