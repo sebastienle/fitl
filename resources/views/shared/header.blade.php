@@ -16,7 +16,7 @@
 		    <div class="collapse navbar-collapse" id="main_menu">
 		      <ul class="nav navbar-nav">
 		        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-		        <li><a href="#">Teams</a></li>
+		        <li><a href="{{ url('teams') }}">Teams</a></li>
 		        <li><a href="{{ url('about') }}">About</a></li>
 		        <li><a href="{{ url('contact') }}">Contact</a></li>
 		      </ul>

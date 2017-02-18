@@ -18,7 +18,13 @@ class TeamController extends Controller
      */
     public function index()
     {
-        //
+        // Get all the objects from the db
+        $teams = Team::all();
+
+        $data = array();
+        $data['objects'] = $teams;
+
+        return view('teams.index', $data);
     }
 
     /**
