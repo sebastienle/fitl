@@ -95,7 +95,8 @@ class TeamController extends Controller
      */
     public function edit($id)
     {
-        //
+        $team = Team::findOrFail($id);
+        return view('teams.edit', ['team' => $team]);
     }
 
     /**
@@ -107,7 +108,26 @@ class TeamController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $team = Team::findOrFail($id);
+
+        //set the team'S data from form data
+        $team->Name = $request->Name;
+        $team->Sport = $request->Sport;
+        $team->NbPlayers = $request->NbPlayers;
+
+        if (!$team->save()) {
+            $errors = $team->getErrors();
+            
+            // redirect back to the create page and pass along the errors
+            return redirect()
+                ->action('TeamController@edit', $team->id)
+                ->with('errors', $team->getErrors())
+                ->withInput();
+        }
+
+        return redirect()
+            ->action('TeamController@index')
+            ->with('message', '<div class="alert alert-success">Team updated successfully!</div>');
     }
 
     /**
@@ -118,6 +138,12 @@ class TeamController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $team = Team::findOrFail($id);
+
+        $team->delete();
+
+        return redirect()
+            ->action('TeamController@index')
+            ->with('message', '<div class="alert alert-info">Team was deleted</div>');
     }
 }
