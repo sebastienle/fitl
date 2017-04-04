@@ -11,4 +11,9 @@ class Team extends Model
 		'Sport' => ['required'],
 		'NbPlayers' => ['required'],
 	];
+
+	// access players using $team->players
+	public function players() {
+		return $this->hasMany('App\Player')->orderBy('last_name', 'desc');
+	}
 }

@@ -12,4 +12,7 @@ Show Team Page
 <p>ID: <?php echo $object->id; ?></p>
 <p>Sport: <?php echo $object->Sport; ?></p>
 <p>Nb Players: <?php echo $object->NbPlayers; ?></p>
+
+@include('players.partials.display')
+
 @endsection

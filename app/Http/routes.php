@@ -29,3 +29,5 @@ Route::get('teams','TeamController@index');
 Route::delete('teams/{team}', 'TeamController@destroy');
 Route::get('teams/{team}/edit', 'TeamController@edit');
 Route::put('teams/{team}', 'TeamController@update');
+
+Route::resource('players', 'PlayerController');
